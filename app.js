@@ -12,9 +12,14 @@ mongoose.connect(db, {useNewURLParser: true})
     .then(() => console.log('Database connection success'))
     .catch(err => console.log(err));
 
+// EJS Layout
 app.use(expressLayouts);
 app.set('view engine', 'ejs');
 
+// Body Parser
+app.use(express.urlencoded({ extended: false }));
+
+// Routes
 app.use('/', require('./routes/index'))
 app.use('/users', require('./routes/users'))
 
